@@ -14,7 +14,6 @@ const App = () => {
         const updateVoices = () => {
             const availableVoices = synth.getVoices();
 
-            // Filter for natural-sounding English voices
             const filteredVoices = availableVoices.filter((voice) =>
                 voice.lang.startsWith("en-") &&
                 (
@@ -29,7 +28,6 @@ const App = () => {
 
             setVoices(filteredVoices);
 
-            // Set a default voice
             const defaultVoice =
                 filteredVoices.find((voice) => voice.name.includes("Google UK English Female")) ||
                 filteredVoices.find((voice) => voice.name.includes("Samantha")) ||
@@ -102,10 +100,10 @@ const App = () => {
         const synth = window.speechSynthesis;
         const utterance = new SpeechSynthesisUtterance(response);
 
-        // Clear the synthesis queue
+
         synth.cancel();
 
-        // Configure voice and tone
+
         utterance.voice = selectedVoice;
         utterance.pitch = 1.2;
         utterance.rate = 0.9;
@@ -116,7 +114,7 @@ const App = () => {
     return (
         <div className="app">
             <div className="header">
-                <h1>Therapist Bot</h1>
+                <h1>MentAssistant</h1>
             </div>
             <div className="chat-box">
                 {messages.map((message, index) => (
